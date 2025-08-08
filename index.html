@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>NFC编辑器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>NFC编辑器</h1>
+        <div id="status" class="status-box info">请选择一项操作</div>
+        <div class="section">
+            <h2>1. 读取 NFC 标签</h2>
+            <button id="scanButton">开始扫描</button>
+            <div id="log">读取到的内容将显示在这里...</div>
+            <button id="clearLogButton" class="secondary">清空日志</button>
+        </div>
+        <div class="section">
+            <h2>2. 写入 NFC 标签</h2>
+            <select id="recordTypeSelect">
+                <option value="text" selected>写入纯文本 (Text)</option>
+                <option value="url">写入网址 (URL)</option>
+                <option value="json">写入JSON数据</option>
+                <option value="wifi">写入Wi-Fi网络</option>
+                <option value="empty">清空NFC标签</option>
+            </select>
+            <input type="text" id="textInput" placeholder="在此输入要写入的文本内容">
+            <textarea id="jsonInput" style="display:none;" placeholder='在此输入JSON格式数据，例如：
+{ "id": 1, "user": "test" }'></textarea>
+            <div id="wifiInputs" style="display:none;" class="section">
+                 <input type="text" id="wifiSSID" placeholder="Wi-Fi 名称 (SSID)">
+                 <input type="password" id="wifiPassword" placeholder="Wi-Fi 密码">
+                 <select id="wifiAuthType">
+                     <option value="WPA" selected>WPA/WPA2/WPA3</option>
+                     <option value="WEP">WEP</option>
+                     <option value="nopass">无密码</option>
+                 </select>
+            </div>
+            <button id="writeButton">写入标签</button>
+        </div>
+        <div class="copyright">
+    <p>© 2025 Susaim | 项目地址：<a href="https://github.com/susaim/Web-NFC-Editor " target="_blank">GitHub</a></p>
+</div>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>

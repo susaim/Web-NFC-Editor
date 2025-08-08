@@ -1,0 +1,187 @@
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #f0f0f0;
+    --glass-background: rgba(255, 255, 255, 0.2);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --blur-effect: blur(20px);
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --info-color: rgba(0,0,0,0.25);
+    --loading-color: #007bff;
+}
+@keyframes pulse {
+    0% { background-color: var(--loading-color); }
+    50% { background-color: #0056b3; }
+    100% { background-color: var(--loading-color); }
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--primary-color);
+    padding: 15px;
+    box-sizing: border-box;
+    background-image: url('https://dailybing.com/api/v1');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.container {
+    width: 100%;
+    max-width: 420px;
+    background: var(--glass-background);
+    backdrop-filter: var(--blur-effect);
+    -webkit-backdrop-filter: var(--blur-effect);
+    border-radius: 20px;
+    border: var(--glass-border);
+    box-shadow: var(--shadow);
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.9em;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.status-box {
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    min-height: 24px;
+    transition: all 0.4s ease;
+    color: white;
+}
+.status-box.info { background-color: var(--info-color); }
+.status-box.success { background-color: var(--success-color); }
+.status-box.error { background-color: var(--error-color); }
+.status-box.loading {
+    background-color: var(--loading-color);
+    animation: pulse 2s infinite;
+}
+.section { display: flex; flex-direction: column; gap: 15px; }
+.section h2 { margin: 0; font-size: 1.3em; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 8px; font-weight: 500; }
+
+input[type="text"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 15px;
+    font-size: 1em;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent !important;
+    color: var(--primary-color);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: .65em auto;
+    padding-right: 40px;
+}
+select option {
+    background-color: #333;
+    color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+textarea {
+    resize: vertical;
+    font-family: 'Courier New', Courier, monospace;
+    min-height: 100px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+button.secondary { background-color: rgba(255,255,255,0.3); color: white; font-size: 0.9em; padding: 8px; margin-top: 5px;}
+
+button:hover,
+select:hover,
+input:hover,
+textarea:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+button:active { transform: translateY(1px); }
+
+button:disabled,
+select:disabled,
+input:disabled,
+textarea:disabled {
+    background-color: #999 !important;
+    cursor: not-allowed;
+    color: #ccc !important;
+    transform: none;
+    box-shadow: none;
+    border-color: #777 !important;
+}
+
+#log {
+    background-color: rgba(0,0,0,0.3);
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 60px;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 0.9em;
+}
+#log a { color: #90cfff; text-decoration: underline; font-weight: bold; }
+.copyright {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.copyright a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: underline;
+}
+.copyright a:hover {
+    color: white;
+}
